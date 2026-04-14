@@ -39,4 +39,19 @@ describe "mensajeros de pelicula" {
         assert.equals( saraConnor.puedeEntregar(puenteDeBrooklyn), true )
         
     }
+
+    test "test 4"{
+
+        george.pagar()
+        assert.equals(george.estaPagado() , true)
+
+        saraConnor.peso(70)
+        assert.equals(saraConnor.peso(), 70)
+
+        saraConnor.vehiculo(moto)
+        assert.equals(saraConnor.vehiculo(), moto)
+
+        assert.equals( saraConnor.puedeEntregar(puenteDeBrooklyn), true )
+
+    }
 }

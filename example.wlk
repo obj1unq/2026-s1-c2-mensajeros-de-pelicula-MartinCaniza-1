@@ -27,6 +27,9 @@ object george{
 
 object paquete {
   var estaPago = false
+
+  //si bien dice que para el cálculo del peso, el peso del paquete es despreciable
+  //siento que puede ser útil agregalo para el caso de que en un futuro se quiera usar el peso del mismo.
   var peso = 0
 
   method estaPago() {
@@ -73,7 +76,7 @@ object matrix{
 
 object jeanGray{
 	
-	var peso = 65
+	const peso = 65
 
 	var paqueteAEntregar = paquete
 
@@ -83,10 +86,6 @@ object jeanGray{
 
 	method peso(){
 		return peso
-	}
-
-	method peso(_peso){
-		peso = _peso
 	}
 
 	method puedeEntregar(ciudad){
@@ -221,9 +220,4 @@ object camion{
 			return peso
 		}
 	}
-
-	method puedeLlamar(){
-		return false
-	}
-
 }
