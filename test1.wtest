@@ -4,31 +4,31 @@ describe "mensajeros de pelicula" {
 
     test "test 1"{
 
-        george.cancelarPago()
-        assert.equals(george.estaPagado() , false)
-        assert.equals( george.paquetePersonal().estaPago() , false)
+        paqueteDeGeorge.estaPago(false)
+        assert.equals(paqueteDeGeorge.estaPago() , false)
+        paqueteDeGeorge.destino(matrix)
+        assert.equals(paqueteDeGeorge.destino(), matrix)
 
-        neo.paqueteAEntregar( george.paquetePersonal() )
-        assert.equals( neo.puedeEntregar(puenteDeBrooklyn), false )
+        assert.equals( paqueteDeGeorge.puedeEntregar(neo), false )
     }
 
     test "test 2"{
 
-        george.pagar()
-        assert.equals(george.estaPagado() , true)
-        assert.equals( george.paquetePersonal().estaPago(), true)
+        paqueteDeGeorge.estaPago(true)
+        assert.equals(paqueteDeGeorge.estaPago() , true)
+        paqueteDeGeorge.destino(matrix)
+        assert.equals(paqueteDeGeorge.destino(), matrix)
 
-        jeanGray.paqueteAEntregar( george.paquetePersonal() )
-        assert.equals( jeanGray.puedeEntregar(matrix), true )
+        assert.equals( paqueteDeGeorge.puedeEntregar(jeanGray), true )
     }
 
     test "test 3"{
 
-        george.pagar()
-        assert.equals(george.estaPagado() , true)
+        paqueteDeGeorge.estaPago(true)
+        assert.equals(paqueteDeGeorge.estaPago() , true)
 
-        saraConnor.peso(70)
-        assert.equals(saraConnor.peso(), 70)
+        saraConnor.pesoIndividual(70)
+        assert.equals(saraConnor.pesoIndividual(), 70)
 
         saraConnor.vehiculo(camion)
         assert.equals(saraConnor.vehiculo(), camion)
@@ -36,22 +36,22 @@ describe "mensajeros de pelicula" {
         saraConnor.vehiculo().cantidadAcoplados(1)
         assert.equals( saraConnor.vehiculo().cantidadAcoplados(), 1 )
 
-        assert.equals( saraConnor.puedeEntregar(puenteDeBrooklyn), true )
+        assert.equals( paqueteDeGeorge.puedeEntregar(saraConnor), false )
         
     }
 
     test "test 4"{
 
-        george.pagar()
-        assert.equals(george.estaPagado() , true)
+        paqueteDeGeorge.estaPago(true)
+        assert.equals(paqueteDeGeorge.estaPago() , true)
 
-        saraConnor.peso(70)
-        assert.equals(saraConnor.peso(), 70)
+        saraConnor.pesoIndividual(70)
+        assert.equals(saraConnor.pesoIndividual(), 70)
 
         saraConnor.vehiculo(moto)
         assert.equals(saraConnor.vehiculo(), moto)
 
-        assert.equals( saraConnor.puedeEntregar(puenteDeBrooklyn), true )
+        assert.equals( paqueteDeGeorge.puedeEntregar(saraConnor), true )
 
     }
 }

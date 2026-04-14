@@ -1,54 +1,33 @@
 
-object george{
+object paqueteDeGeorge{
 
-	var paquetePersonal = paquete
 
-	method paquetePersonal(){
-		return paquetePersonal
+	var destino = puenteDeBrooklyn
+	var estaPago = false
+
+
+    method estaPago() {
+  		return estaPago
+    }
+  
+    method estaPago(_estaPago){
+  		estaPago = _estaPago
+    } 
+
+	method destino(){
+		return destino
 	}
 
-	method paqueteDeGeorge(_paqueteDeGeorge){
-		paquetePersonal = _paqueteDeGeorge
+	method destino(_destino){
+		destino = _destino
 	}
 
-	method estaPagado(){
-		return paquetePersonal.estaPago()
-	}
-
-	method pagar(){
-		paquetePersonal.estaPago(true)
-	}
-
-	method cancelarPago(){
-		paquetePersonal.estaPago(false)
+	method puedeEntregar(mensajero){
+		return self.estaPago() && destino.puedePasar(mensajero)
 	}
 
 }
 
-object paquete {
-  var estaPago = false
-
-  //si bien dice que para el cálculo del peso, el peso del paquete es despreciable
-  //siento que puede ser útil agregalo para el caso de que en un futuro se quiera usar el peso del mismo.
-  var peso = 0
-
-  method estaPago() {
-	return estaPago
-  }
-
-  method estaPago(_estaPago){
-	estaPago = _estaPago
-  } 
-
-  method peso(){
-	return peso
-  }
-
-  method peso(_peso){
-	peso = _peso
-  }
-
-}
 
 object puenteDeBrooklyn {
 	var pesoPermitido = 1000
@@ -76,40 +55,25 @@ object matrix{
 
 object jeanGray{
 	
-	const peso = 65
+	const pesoIndividual = 65
 
-	var paqueteAEntregar = paquete
 
 	method puedeLlamar(){
 		return true
 	}
 
-	method peso(){
-		return peso
+	method pesoIndividual(){
+		return pesoIndividual
 	}
 
-	method puedeEntregar(ciudad){
-
-		return paqueteAEntregar.estaPago() && ciudad.puedePasar(self)
-		
-	}
-
-	method paqueteAEntregar(){
-		return paqueteAEntregar
-	}
-
-	method paqueteAEntregar(_paqueteAEntregar){
-		paqueteAEntregar = _paqueteAEntregar
-	}
 }
 
 object neo{
 	
-	const peso = 0
+	const pesoIndividual = 0
 
     const celulardeNeo = celular
 
-	var paqueteAEntregar = paquete
 
 	method puedeLlamar(){
 		
@@ -119,20 +83,6 @@ object neo{
 
 	method peso(){
 		return peso
-	}
-
-	method puedeEntregar(ciudad){
-
-		return paqueteAEntregar.estaPago() && ciudad.puedePasar(self)
-		
-	}
-
-	method paqueteAEntregar(){
-		return paqueteAEntregar
-	}
-
-	method paqueteAEntregar(_paqueteAEntregar){
-		paqueteAEntregar = _paqueteAEntregar
 	}
 
 }
@@ -151,16 +101,20 @@ object celular{
 }
 
 object saraConnor{
-	var peso = 70
-	var vehiculo = moto
-	var paqueteAEntregar = paquete
+	var pesoIndividual = 70
+	var vehiculo = camion
+	var paqueteAEntregar = paqueteDeGeorge
 
-	method peso(){
-		return peso
+	method pesoIndividual(){
+		return pesoIndividual
 	}
 
-	method peso(_peso){
-		peso = _peso
+	method peso(){
+		return pesoIndividual + vehiculo.peso()
+	}
+
+	method pesoIndividual(_pesoIndividual){
+		pesoIndividual = _pesoIndividual
 	}
 
 	method vehiculo(){
@@ -169,10 +123,6 @@ object saraConnor{
 
 	method vehiculo(_vehiculo){
 		vehiculo = _vehiculo
-	}
-
-	method pesoTotal(){
-		return peso + vehiculo.peso()
 	}
 
 	method puedeEntregar(ciudad){
@@ -194,6 +144,7 @@ object moto{
 	method peso(){
 		return peso
 	}
+
 }
 
 object camion{
@@ -202,7 +153,7 @@ object camion{
 	var cantidadAcoplados = 0
 
 	method peso(){
-		return peso
+		return peso + (pesoAcoplado * cantidadAcoplados)
 	}
 
 	method cantidadAcoplados(){
@@ -213,11 +164,5 @@ object camion{
 		cantidadAcoplados = _cantidadAcoplados
 	}
 
-	method pesoTotal(){
-		if (cantidadAcoplados > 0){
-			return peso + (pesoAcoplado * cantidadAcoplados)
-		} else {
-			return peso
-		}
-	}
+
 }
