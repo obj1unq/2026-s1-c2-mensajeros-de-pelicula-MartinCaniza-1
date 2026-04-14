@@ -81,8 +81,8 @@ object neo{
 
 	}
 
-	method peso(){
-		return peso
+	method pesoIndividual(){
+		return pesoIndividual
 	}
 
 }
@@ -103,7 +103,6 @@ object celular{
 object saraConnor{
 	var pesoIndividual = 70
 	var vehiculo = camion
-	var paqueteAEntregar = paqueteDeGeorge
 
 	method pesoIndividual(){
 		return pesoIndividual
@@ -125,17 +124,6 @@ object saraConnor{
 		vehiculo = _vehiculo
 	}
 
-	method puedeEntregar(ciudad){
-		return paqueteAEntregar.estaPago() && ciudad.puedePasar(self)
-	}
-
-	method paqueteAEntregar(){
-		return paqueteAEntregar
-	}
-
-	method paqueteAEntregar(_paqueteAEntregar){
-		paqueteAEntregar = _paqueteAEntregar
-	}
 }
 
 object moto{
