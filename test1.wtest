@@ -27,14 +27,16 @@ describe "mensajeros de pelicula" {
         paqueteDeGeorge.estaPago(true)
         assert.equals(paqueteDeGeorge.estaPago() , true)
 
-        saraConnor.pesoIndividual(70)
-        assert.equals(saraConnor.pesoIndividual(), 70)
-
         saraConnor.vehiculo(camion)
         assert.equals(saraConnor.vehiculo(), camion)
     
         saraConnor.vehiculo().cantidadAcoplados(1)
         assert.equals( saraConnor.vehiculo().cantidadAcoplados(), 1 )
+
+
+        saraConnor.peso(70)
+        assert.equals(saraConnor.peso(), 1070)
+
 
         assert.equals( paqueteDeGeorge.puedeEntregar(saraConnor), false )
         
@@ -45,11 +47,13 @@ describe "mensajeros de pelicula" {
         paqueteDeGeorge.estaPago(true)
         assert.equals(paqueteDeGeorge.estaPago() , true)
 
-        saraConnor.pesoIndividual(70)
-        assert.equals(saraConnor.pesoIndividual(), 70)
-
         saraConnor.vehiculo(moto)
         assert.equals(saraConnor.vehiculo(), moto)
+
+        saraConnor.peso(70)
+        assert.equals(saraConnor.peso(), 170)
+
+
 
         assert.equals( paqueteDeGeorge.puedeEntregar(saraConnor), true )
 

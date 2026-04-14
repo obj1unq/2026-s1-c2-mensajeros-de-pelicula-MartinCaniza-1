@@ -55,23 +55,22 @@ object matrix{
 
 object jeanGray{
 	
-	const pesoIndividual = 65
+	const peso = 65
 
 
 	method puedeLlamar(){
 		return true
 	}
 
-	method pesoIndividual(){
-		return pesoIndividual
+	method peso(){
+		return peso
 	}
 
 }
 
 object neo{
 	
-	const pesoIndividual = 0
-
+	const peso = 0
     const celulardeNeo = celular
 
 
@@ -81,8 +80,8 @@ object neo{
 
 	}
 
-	method pesoIndividual(){
-		return pesoIndividual
+	method peso(){
+		return peso
 	}
 
 }
@@ -101,19 +100,15 @@ object celular{
 }
 
 object saraConnor{
-	var pesoIndividual = 70
+	var peso = 70
 	var vehiculo = camion
 
-	method pesoIndividual(){
-		return pesoIndividual
+	method peso(_peso){
+		peso = _peso
 	}
 
 	method peso(){
-		return pesoIndividual + vehiculo.peso()
-	}
-
-	method pesoIndividual(_pesoIndividual){
-		pesoIndividual = _pesoIndividual
+		return peso + vehiculo.peso()
 	}
 
 	method vehiculo(){
