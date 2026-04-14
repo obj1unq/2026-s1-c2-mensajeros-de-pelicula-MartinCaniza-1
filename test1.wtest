@@ -4,9 +4,39 @@ describe "mensajeros de pelicula" {
 
     test "test 1"{
 
-        assert.equals(false,false)
+        george.cancelarPago()
+        assert.equals(george.estaPagado() , false)
+        assert.equals( george.paquetePersonal().estaPago() , false)
 
+        neo.paqueteAEntregar( george.paquetePersonal() )
+        assert.equals( neo.puedeEntregar(puenteDeBrooklyn), false )
+    }
 
+    test "test 2"{
 
-    }|
+        george.pagar()
+        assert.equals(george.estaPagado() , true)
+        assert.equals( george.paquetePersonal().estaPago(), true)
+
+        jeanGray.paqueteAEntregar( george.paquetePersonal() )
+        assert.equals( jeanGray.puedeEntregar(matrix), true )
+    }
+
+    test "test 3"{
+
+        george.pagar()
+        assert.equals(george.estaPagado() , true)
+
+        saraConnor.peso(70)
+        assert.equals(saraConnor.peso(), 70)
+
+        saraConnor.vehiculo(camion)
+        assert.equals(saraConnor.vehiculo(), camion)
+    
+        saraConnor.vehiculo().cantidadAcoplados(1)
+        assert.equals( saraConnor.vehiculo().cantidadAcoplados(), 1 )
+
+        assert.equals( saraConnor.puedeEntregar(puenteDeBrooklyn), true )
+        
+    }
 }

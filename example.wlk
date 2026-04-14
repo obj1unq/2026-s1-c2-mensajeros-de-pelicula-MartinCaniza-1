@@ -1,9 +1,3 @@
-/** First Wollok example */
-object wollok {
-	method howAreYou() {
-		return 'I am Wolloktastic!'
-	}
-}
 
 object george{
 
@@ -81,6 +75,8 @@ object jeanGray{
 	
 	var peso = 65
 
+	var paqueteAEntregar = paquete
+
 	method puedeLlamar(){
 		return true
 	}
@@ -91,6 +87,20 @@ object jeanGray{
 
 	method peso(_peso){
 		peso = _peso
+	}
+
+	method puedeEntregar(ciudad){
+
+		return paqueteAEntregar.estaPago() && ciudad.puedePasar(self)
+		
+	}
+
+	method paqueteAEntregar(){
+		return paqueteAEntregar
+	}
+
+	method paqueteAEntregar(_paqueteAEntregar){
+		paqueteAEntregar = _paqueteAEntregar
 	}
 }
 
@@ -113,11 +123,9 @@ object neo{
 	}
 
 	method puedeEntregar(ciudad){
-		if (ciudad ){
-			return paqueteAEntregar.estaPago() && ciudad.puedePasar(self)
-		} else {
-			return false
-		}
+
+		return paqueteAEntregar.estaPago() && ciudad.puedePasar(self)
+		
 	}
 
 	method paqueteAEntregar(){
@@ -146,6 +154,7 @@ object celular{
 object saraConnor{
 	var peso = 70
 	var vehiculo = moto
+	var paqueteAEntregar = paquete
 
 	method peso(){
 		return peso
@@ -166,6 +175,18 @@ object saraConnor{
 	method pesoTotal(){
 		return peso + vehiculo.peso()
 	}
+
+	method puedeEntregar(ciudad){
+		return paqueteAEntregar.estaPago() && ciudad.puedePasar(self)
+	}
+
+	method paqueteAEntregar(){
+		return paqueteAEntregar
+	}
+
+	method paqueteAEntregar(_paqueteAEntregar){
+		paqueteAEntregar = _paqueteAEntregar
+	}
 }
 
 object moto{
@@ -179,23 +200,14 @@ object moto{
 object camion{
 	const peso = 500
 	const pesoAcoplado = 500
-	var tieneAcoplado = false
 	var cantidadAcoplados = 0
 
 	method peso(){
 		return peso
 	}
 
-	method tieneAcoplado(){
-		return tieneAcoplado
-	}
-
 	method cantidadAcoplados(){
 		return cantidadAcoplados
-	}
-
-	method tieneAcoplado(_tieneAcoplado){
-		tieneAcoplado = _tieneAcoplado
 	}
 
 	method cantidadAcoplados(_cantidadAcoplados){
@@ -203,7 +215,7 @@ object camion{
 	}
 
 	method pesoTotal(){
-		if (tieneAcoplado){
+		if (cantidadAcoplados > 0){
 			return peso + (pesoAcoplado * cantidadAcoplados)
 		} else {
 			return peso
