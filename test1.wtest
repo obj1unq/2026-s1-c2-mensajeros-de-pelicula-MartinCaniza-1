@@ -1,0 +1,61 @@
+import example.*
+
+describe "mensajeros de pelicula" {
+
+    test "El paquete de George que no está pago no puede ser llevado por Neo a la matrix"{
+
+        paqueteDeGeorge.estaPago(false)
+        assert.equals(paqueteDeGeorge.estaPago() , false)
+        paqueteDeGeorge.destino(matrix)
+        assert.equals(paqueteDeGeorge.destino(), matrix)
+
+        assert.equals( paqueteDeGeorge.puedeEntregar(neo), false )
+    }
+
+    test "El paquete de George que sí está pago puede ser llevado por Jean a la matrix"{
+
+        paqueteDeGeorge.estaPago(true)
+        assert.equals(paqueteDeGeorge.estaPago() , true)
+        paqueteDeGeorge.destino(matrix)
+        assert.equals(paqueteDeGeorge.destino(), matrix)
+
+        assert.equals( paqueteDeGeorge.puedeEntregar(jeanGray), true )
+    }
+
+    test "El paquete de George que sí está pago no puede ser llevado por Sara (que pesa 70kg) a Brooklyn si es que utiliza un camión con un acoplado"{
+
+        paqueteDeGeorge.estaPago(true)
+        assert.equals(paqueteDeGeorge.estaPago() , true)
+
+        saraConnor.vehiculo(camion)
+        assert.equals(saraConnor.vehiculo(), camion)
+    
+        saraConnor.vehiculo().cantidadAcoplados(1)
+        assert.equals( saraConnor.vehiculo().cantidadAcoplados(), 1 )
+
+
+        saraConnor.peso(70)
+        assert.equals(saraConnor.peso(), 1070)
+
+
+        assert.equals( paqueteDeGeorge.puedeEntregar(saraConnor), false )
+        
+    }
+
+    test "El paquete de George que sí está pago puede ser llevado por Sara (que pesa 70kg) a Brooklyn si es que utiliza una moto"{
+
+        paqueteDeGeorge.estaPago(true)
+        assert.equals(paqueteDeGeorge.estaPago() , true)
+
+        saraConnor.vehiculo(moto)
+        assert.equals(saraConnor.vehiculo(), moto)
+
+        saraConnor.peso(70)
+        assert.equals(saraConnor.peso(), 170)
+
+
+
+        assert.equals( paqueteDeGeorge.puedeEntregar(saraConnor), true )
+
+    }
+}
