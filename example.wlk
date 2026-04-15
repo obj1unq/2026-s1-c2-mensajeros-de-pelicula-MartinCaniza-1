@@ -119,7 +119,7 @@ object saraConnor{
 		vehiculo = _vehiculo
 	}
 
-	method puedeLLamar(){
+	method puedeLlamar(){
 		return false
 	}
 
