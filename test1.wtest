@@ -2,7 +2,7 @@ import example.*
 
 describe "mensajeros de pelicula" {
 
-    test "test 1"{
+    test "El paquete de George que no está pago no puede ser llevado por Neo a la matrix"{
 
         paqueteDeGeorge.estaPago(false)
         assert.equals(paqueteDeGeorge.estaPago() , false)
@@ -12,7 +12,7 @@ describe "mensajeros de pelicula" {
         assert.equals( paqueteDeGeorge.puedeEntregar(neo), false )
     }
 
-    test "test 2"{
+    test "El paquete de George que sí está pago puede ser llevado por Jean a la matrix"{
 
         paqueteDeGeorge.estaPago(true)
         assert.equals(paqueteDeGeorge.estaPago() , true)
@@ -22,7 +22,7 @@ describe "mensajeros de pelicula" {
         assert.equals( paqueteDeGeorge.puedeEntregar(jeanGray), true )
     }
 
-    test "test 3"{
+    test "El paquete de George que sí está pago no puede ser llevado por Sara (que pesa 70kg) a Brooklyn si es que utiliza un camión con un acoplado"{
 
         paqueteDeGeorge.estaPago(true)
         assert.equals(paqueteDeGeorge.estaPago() , true)
@@ -42,7 +42,7 @@ describe "mensajeros de pelicula" {
         
     }
 
-    test "test 4"{
+    test "El paquete de George que sí está pago puede ser llevado por Sara (que pesa 70kg) a Brooklyn si es que utiliza una moto"{
 
         paqueteDeGeorge.estaPago(true)
         assert.equals(paqueteDeGeorge.estaPago() , true)
