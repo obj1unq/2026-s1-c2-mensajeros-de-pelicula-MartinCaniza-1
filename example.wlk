@@ -119,6 +119,10 @@ object saraConnor{
 		vehiculo = _vehiculo
 	}
 
+	method puedeLLamar(){
+		return false
+	}
+
 }
 
 object moto{
